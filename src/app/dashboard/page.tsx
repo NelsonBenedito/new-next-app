@@ -28,9 +28,18 @@ import { PlusCircle, Funnel } from "@phosphor-icons/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const createDataFormSchema = z.object({
-  name: z.string().min(1, { message: "Nome obrigatório" }).transform(name => {
-    return name.trim()
-  }),
+  name: z
+    .string()
+    .min(1, { message: "Nome obrigatório" })
+    .transform((name) => {
+      return name
+        .trim()
+        .split(" ")
+        .map((word) => {
+          return word[0].toLocaleUpperCase().concat(word.substring(1));
+        })
+        .join(" ");
+    }),
   value: z.string().min(1, { message: "Valor Obrigatório" }),
 });
 
@@ -47,7 +56,7 @@ export default function Dashboard() {
     resolver: zodResolver(createDataFormSchema),
   });
 
-  function createData(data: any) {
+  function createData(data: createDataFormData) {
     setOutput(JSON.stringify(data, null, 2));
   }
 
@@ -59,8 +68,8 @@ export default function Dashboard() {
           onSubmit={handleSubmit(createData)}
           className="flex items-center gap-2"
         >
-          <Input placeholder="Nome" {...register("name")} />
-          <Input placeholder="Valor(R$)" {...register("value")} />
+          <Input placeholder="Nome" />
+          <Input placeholder="Valor(R$)"/>
           <Button type="submit" variant="link" className="gap-1">
             <Funnel size={20} />
             Filtrar resultados

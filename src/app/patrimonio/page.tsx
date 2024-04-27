@@ -14,7 +14,8 @@ export default function Patrimonio() {
   }: Constantes = objConstantes;
 
   return (
-    <div className=" md:pl-14">
+    <div className="p-4 mx-auto max-w-4xl mt-2md:pl-14">
+      <h1 className="text-3xl font-bold">Patrimônio</h1>
       <div className="flex gap-4 p-6">
         <AmountCard
           value={amount}
