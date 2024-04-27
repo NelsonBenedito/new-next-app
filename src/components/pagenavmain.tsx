@@ -37,8 +37,11 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 export default function PageNavMain() {
   return (
     <>
-      <Alert variant="destructive" className="flex flex-col justify-center align-middle w-5/6 self-center mt-2 md:mt-4">
-        <WarningCircle  className="h-8 w-8 " />
+      <Alert
+        variant="destructive"
+        className="flex flex-col justify-center align-middle w-5/6 self-center mt-2 md:mt-4"
+      >
+        <WarningCircle className="h-8 w-8 " />
         <AlertTitle className="ml-4">Aviso Importante!</AlertTitle>
         <AlertDescription className="ml-4">
           Este é apenas um beta. Funcionalidades ainda não estão disponíveis.
@@ -91,13 +94,15 @@ export default function PageNavMain() {
                   Eventos
                 </Link>
               </SheetClose>
-              <Link
-                className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-                href="/members"
-              >
-                <UsersThree className="h-5 w-5" />
-                Membros
-              </Link>
+              <SheetClose asChild>
+                <Link
+                  className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                  href="/members"
+                >
+                  <UsersThree className="h-5 w-5" />
+                  Membros
+                </Link>
+              </SheetClose>
               <SheetClose asChild>
                 <Link
                   className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
