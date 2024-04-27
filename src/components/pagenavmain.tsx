@@ -1,5 +1,14 @@
-"use client"
-import { HouseSimple, MagnifyingGlass, ClipboardText, Bank, CalendarDots, UsersThree, Lightning, Gear } from "@phosphor-icons/react";
+"use client";
+import {
+  HouseSimple,
+  MagnifyingGlass,
+  ClipboardText,
+  Bank,
+  CalendarDots,
+  UsersThree,
+  Lightning,
+  Gear,
+} from "@phosphor-icons/react";
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 import {
   DropdownMenu,
@@ -20,7 +29,7 @@ import {
   BreadcrumbPage,
 } from "./ui/breadcrumb";
 import { Input } from "./ui/input";
-import { Sheet, SheetTrigger, SheetContent } from "./ui/sheet";
+import { Sheet, SheetTrigger, SheetContent, SheetClose } from "./ui/sheet";
 
 export default function PageNavMain() {
   return (
@@ -35,34 +44,43 @@ export default function PageNavMain() {
           </SheetTrigger>
           <SheetContent className="sm:max-w-xs" side="left">
             <nav className="grid gap-6 text-lg font-medium">
-              <Link
-                className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
-                href="/"
-              >
-                <HouseSimple className="h-5 w-5 transition-all group-hover:scale-110" />
-                <span className="sr-only">Inicio</span>
-              </Link>
-              <Link
-                className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-                href="/dashboard"
-              >
-                <ClipboardText className="h-5 w-5" />
-                Dashboard
-              </Link>
-              <Link
-                className="flex items-center gap-4 px-2.5 text-foreground"
-                href="/patrimonio"
-              >
-                <Bank className="h-5 w-5" />
-                Patrimônio
-              </Link>
-              <Link
-                className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-                href="/events"
-              >
-                <CalendarDots className="h-5 w-5" />
-                Eventos
-              </Link>
+              <SheetClose asChild>
+                <Link
+                  type="submit"
+                  className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
+                  href="/"
+                >
+                  <HouseSimple className="h-5 w-5 transition-all group-hover:scale-110" />
+                  <span className="sr-only">Inicio</span>
+                </Link>
+              </SheetClose>
+              <SheetClose asChild>
+                <Link
+                  className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                  href="/dashboard"
+                >
+                  <ClipboardText className="h-5 w-5" />
+                  Dashboard
+                </Link>
+              </SheetClose>
+              <SheetClose asChild>
+                <Link
+                  className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                  href="/patrimonio"
+                >
+                  <Bank className="h-5 w-5" />
+                  Patrimônio
+                </Link>
+              </SheetClose>
+              <SheetClose asChild>
+                <Link
+                  className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                  href="/events"
+                >
+                  <CalendarDots className="h-5 w-5" />
+                  Eventos
+                </Link>
+              </SheetClose>
               <Link
                 className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                 href="/membros"
@@ -70,20 +88,24 @@ export default function PageNavMain() {
                 <UsersThree className="h-5 w-5" />
                 Membros
               </Link>
-              <Link
-                className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-                href="/kids"
-              >
-                <Lightning className="h-5 w-5" />
-                Kids
-              </Link>
-              <Link
-                className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-                href="/settings"
-              >
-                <Gear className="h-5 w-5" />
-                Configurações
-              </Link>
+              <SheetClose asChild>
+                <Link
+                  className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                  href="/kids"
+                >
+                  <Lightning className="h-5 w-5" />
+                  Kids
+                </Link>
+              </SheetClose>
+              <SheetClose asChild>
+                <Link
+                  className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                  href="/settings"
+                >
+                  <Gear className="h-5 w-5" />
+                  Configurações
+                </Link>
+              </SheetClose>
             </nav>
           </SheetContent>
         </Sheet>
