@@ -8,7 +8,8 @@ import {
   UsersThree,
   Lightning,
   Gear,
-  List
+  List,
+  WarningCircle,
 } from "@phosphor-icons/react";
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 import {
@@ -31,10 +32,18 @@ import {
 } from "./ui/breadcrumb";
 import { Input } from "./ui/input";
 import { Sheet, SheetTrigger, SheetContent, SheetClose } from "./ui/sheet";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function PageNavMain() {
   return (
     <>
+      <Alert variant="destructive" className="flex flex-col justify-center align-middle w-5/6 self-center mt-2 md:mt-4">
+        <WarningCircle  className="h-8 w-8 " />
+        <AlertTitle className="ml-4">Aviso Importante!</AlertTitle>
+        <AlertDescription className="ml-4">
+          Este é apenas um beta. Funcionalidades ainda não estão disponíveis.
+        </AlertDescription>
+      </Alert>
       <header className="flex  w-auto top-0 z-30 h-14 items-center gap-4 border-b bg-background p-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6 sm:ml-14">
         <Sheet>
           <SheetTrigger asChild>
