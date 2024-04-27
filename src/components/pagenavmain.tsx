@@ -8,6 +8,7 @@ import {
   UsersThree,
   Lightning,
   Gear,
+  List
 } from "@phosphor-icons/react";
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 import {
@@ -37,8 +38,8 @@ export default function PageNavMain() {
       <header className="flex  w-auto top-0 z-30 h-14 items-center gap-4 border-b bg-background p-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6 sm:ml-14">
         <Sheet>
           <SheetTrigger asChild>
-            <Button className="sm:hidden" size="icon" variant="outline">
-              <HouseSimple className="h-5 w-5" />
+            <Button className="md:hidden" size="icon" variant="outline">
+              <List className="h-5 w-5" />
               <span className="sr-only">Toggle Menu</span>
             </Button>
           </SheetTrigger>

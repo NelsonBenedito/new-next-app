@@ -50,9 +50,19 @@ import {
   CaretLeft,
 } from "@phosphor-icons/react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import AmountCard from "@/components/amountCard";
+
+import { objConstantes, Constantes } from "@/lib/api";
 
 export default function DashboardComponent() {
-  
+  const {
+    amount,
+    weekendAmount,
+    currentMonth,
+    lastMonth,
+    currentWeek,
+    lastWeek,
+  }: Constantes = objConstantes;
 
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
@@ -69,37 +79,25 @@ export default function DashboardComponent() {
                   </CardDescription>
                 </CardHeader>
                 <CardFooter>
-                 <Link href="/dashboard"><Button>Criar novo relatório</Button></Link> 
+                  <Link href="/dashboard">
+                    <Button>Criar novo relatório</Button>
+                  </Link>
                 </CardFooter>
               </Card>
-              <Card x-chunk="dashboard-05-chunk-1">
-                <CardHeader className="pb-2">
-                  <CardDescription>Esta semana</CardDescription>
-                  <CardTitle className="text-4xl">R$</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-xs text-muted-foreground">
-                    +25% da semana passada
-                  </div>
-                </CardContent>
-                <CardFooter>
-                  <Progress aria-label="25% increase" value={25} />
-                </CardFooter>
-              </Card>
-              <Card x-chunk="dashboard-05-chunk-2">
-                <CardHeader className="pb-2">
-                  <CardDescription>Este mês</CardDescription>
-                  <CardTitle className="text-4xl">R$</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-xs text-muted-foreground">
-                    +10% do último mês
-                  </div>
-                </CardContent>
-                <CardFooter>
-                  <Progress aria-label="12% increase" value={12} />
-                </CardFooter>
-              </Card>
+              <AmountCard
+                value={amount}
+                title={`R$${amount}`}
+                description={currentMonth}
+                details={lastMonth}
+                percentage={`+${amount}%`}
+              />
+              <AmountCard
+                value={weekendAmount}
+                title={`R$${weekendAmount}`}
+                description={currentWeek}
+                details={lastWeek}
+                percentage={`+${weekendAmount}%`}
+              />
             </div>
             <Tabs defaultValue="semana">
               <div className="flex items-center">
@@ -358,7 +356,10 @@ export default function DashboardComponent() {
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button className="h-8 w-8" size="icon" variant="outline">
-                        <DotsThreeOutlineVertical className="h-3.5 w-3.5" weight="fill"/>
+                        <DotsThreeOutlineVertical
+                          className="h-3.5 w-3.5"
+                          weight="fill"
+                        />
                         <span className="sr-only">mais</span>
                       </Button>
                     </DropdownMenuTrigger>
@@ -421,7 +422,7 @@ export default function DashboardComponent() {
                   <div className="grid auto-rows-max gap-3">
                     <div className="font-semibold"> Informação de cobrança</div>
                     <div className="text-muted-foreground">
-                    Igual ao endereço de entrega
+                      Igual ao endereço de entrega
                     </div>
                   </div>
                 </div>

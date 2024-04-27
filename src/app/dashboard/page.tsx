@@ -23,7 +23,6 @@ import {
   TableCell,
 } from "@/components/ui/table";
 import { PlusCircle, Funnel } from "@phosphor-icons/react";
-
 export default function Dashboard() {
   return (
     <div className="p-4 mx-auto max-w-4xl mt-2">
